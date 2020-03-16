@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CoronaUpdate</title>
+</head>
+<body>
+
+<h1>Corona Update</h1>
+
+<form action="/" method="POST">
+	<input type="text" name="search" placeholder="E.g. 'Canada'" required>
+	<br>
+	<br>
+	<button>SEARCH</button>
+</form>
+
+{% if message %}
+
+<p>  {{ message }} </p>
+
+{% endif %}
+
+<h2>Country: </h2> <p> <strong> {{ country }} </strong> </p>
+
+
+<h2>Number of Cases: </h2>
+<p> <strong> {{ cases }} </strong> </p>
+
+
+<h2>Number of Cases Registered: </h2>
+<p> <strong> {{ todayCases }} </strong> </p>
+
+
+<h2>Total Number of Deaths: </h2>
+<p> <strong> {{ deaths }} </strong> </p>
+
+
+<h2>Number of Deaths Today: </h2>
+<p> <strong> {{ todayDeaths }} </strong> </p>
+
+
+<h2>Number of People Recovered: </h2>
+<p> <strong> {{ recovered }} </strong> </p>
+
+
+<h2>Number of Critical Cases: </h2>
+<p> <strong> {{ critical }} </strong> </p>
+
+
+</body>
+</html>
