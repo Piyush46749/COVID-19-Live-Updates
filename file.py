@@ -4,6 +4,9 @@ from flask import jsonify
 from flask import render_template
 import json
 import requests
+import folium
+from folium.plugins import HeatMap
+
 
 app=Flask(__name__)
 
@@ -27,7 +30,7 @@ def search():
 	# message="0"
 	search_word= request.form.get('search')
 
-	URL= "https://corona.lmao.ninja/countries"
+	URL= "https://corona.lmao.ninja/v2/countries"
 	r=requests.get(url=URL)
 	data=r.json()
 	# data_json=json.dumps(data)
@@ -35,7 +38,7 @@ def search():
 		# print(each.keys())
 		# for key, values in each.items():
 		# 	print(key+"-"+ str(values))
-		if each.get("country") == search_word:
+		if each["country"] == search_word:
 			country=each["country"]
 			cases=each["cases"]
 			todayCases=each["todayCases"]
@@ -63,3 +66,31 @@ def search():
 
 		# for key, value in each.items():
 		# 	print(key)
+
+
+@app.route("/map", methods=["GET"])
+def map():
+	m = folium.Map(
+    location=[20, 77],
+    zoom_start=4,
+    tiles='Stamen Terrain'
+	)
+	URL= "https://corona.lmao.ninja/v2/countries"
+	r=requests.get(url=URL)
+	data=r.json()
+	# print(data)
+	for each in data:
+		# print(each["country"])
+		# print(each["countryInfo"])
+		# print(each["countryInfo"]["flag"])
+		lat = each["countryInfo"]["lat"]
+		lon = each["countryInfo"]["long"]
+		cases = each["cases"]
+		deaths = each["deaths"]
+		icon = folium.features.CustomIcon(each["countryInfo"]["flag"],icon_size=(40, 30))
+		tooltip = each["country"]
+		folium.Marker([lat, lon], icon= icon, popup="Total Cases: "+str(cases)+"\n"+"Total Deaths: "+str(deaths), tooltip=tooltip).add_to(m)
+		# folium.plugins.Heatmap([20, 77, 50], "MY_INDIA")
+		# folium.Marker([latitude[], longitude[1]], popup='<b>Timberline Lodge</b>', tooltip=tooltip).add_to(m)
+		# m.save("index1.html")	
+	return m._repr_html_()
