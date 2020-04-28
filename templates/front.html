@@ -23,9 +23,9 @@ body {
   color: #F1C400;
 }
 
-.topnav a.active {
+/*.topnav a.active {
   color: #F1C400;
-}
+}*/
 
 .navbar-brand-logo {
   float:left;
@@ -50,6 +50,32 @@ body {
   font-weight: 560;
 }
 
+.btn {
+  background-color: rgba(104,172,229);
+  color: white;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.24), 0 6px 20px 0 rgba(0,0,0,0.24);
+}
+
+.btn:hover {
+  background-color: #002d72;
+  color: white;
+  box-shadow: 0 12px 16px 0 #002d72, 0 17px 50px 0 rgba(0,0,0,0.24);
+}
+
+table, tr, td {
+  border: 1px solid black;
+  padding: 8px;
+}
+
+#tbl {
+  border-collapse: collapse;
+  width: 25%;
+}
+
+#tbl tr:nth-child(even){background-color: #f2f2f2;}
+
+#tbl tr:hover {background-color: rgba(104,172,229);}
+
 
 </style>
 </head>
@@ -67,7 +93,7 @@ body {
 		<a href="https://coronavirus.jhu.edu/live">Videos & Live Events</a>
 		<a href="https://coronavirus.jhu.edu/#covid-19-basics">COVID-19 Basics</a>
 		<a href="https://www.bloomberg.com/news/audio/2020-04-24/tracking-and-identifying-covid-19-cases-podcast">News & Information</a>
-		<a href="/map">Maps & Trends</a>
+		<a href="/world_covid_map">Maps & Trends</a>
 		<a class="active" href="/">Home</a>
 	</div>
 
@@ -75,45 +101,50 @@ body {
 
 <h1> COVID-19 Dashboard </h1>
 <form action="/" method="POST">
-	<input type="text" name="search" placeholder="E.g. 'Canada'" required>
+	<input type="text" name="search" placeholder="Enter the country..." required>
 	<br>
 	<br>
-	<button>SEARCH</button>
+	<button class="btn"> SUBMIT </button>     
 </form>
 
-{% if message %}
+<br>
 
-<p>  {{ message }} </p>
-
+{% if flag==False %}
+<p > <strong> Please check the country's name </strong></p>
 {% endif %}
 
-<h2>Country: </h2>
-<p> <strong> {{ country }} </strong> </p>
-
-
-<h2>Number of Cases: </h2>
-<p> <strong> {{ cases }} </strong> </p>
-
-
-<h2>Number of Cases Registered: </h2>
-<p> <strong> {{ todayCases }} </strong> </p>
-
-
-<h2>Total Number of Deaths: </h2>
-<p> <strong> {{ deaths }} </strong> </p>
-
-
-<h2>Number of Deaths Today: </h2>
-<p> <strong> {{ todayDeaths }} </strong> </p>
-
-
-<h2>Number of People Recovered: </h2>
-<p> <strong> {{ recovered }} </strong> </p>
-
-
-<h2>Number of Critical Cases: </h2>
-<p> <strong> {{ critical }} </strong> </p>
-
+{% if flag==True %}
+<table id = "tbl">
+    <tr> 
+    	<td> <strong> Country </strong> </td>
+    	<td> <strong> {{ country }} </strong> </td> 
+    </tr>
+    <tr> 
+    	<td> <strong> Number of Confirmed Cases </strong> </td>
+    	<td> <strong> {{ cases }} </strong> </td> 
+    </tr>
+    <tr> 
+    	<td> <strong> Number of Cases Registered Today </strong> </td>
+    	<td> <strong> {{ todayCases }} </strong> </td> 
+    </tr>
+    <tr> 
+    	<td> <strong> Total Number of Deaths </strong> </td>
+    	<td> <strong> {{ deaths }} </strong> </td> 
+    </tr>
+    <tr> 
+    	<td> <strong> Total Number of Deaths Today </strong> </td>
+    	<td> <strong> {{ todayDeaths }} </strong> </td> 
+    </tr>
+    <tr> 
+    	<td> <strong> Total Number of Critical Cases </strong> </td>
+    	<td> <strong> {{ critical }} </strong> </td> 
+    </tr>
+    <tr> 
+    	<td> <strong> Total Number of People Recovered </strong> </td>
+    	<td> <strong> {{ recovered }} </strong> </td> 
+    </tr>  
+</table>
+{% endif %}
 
 </body>
 </html>

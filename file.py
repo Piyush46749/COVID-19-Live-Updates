@@ -38,7 +38,7 @@ def search():
 		# print(each.keys())
 		# for key, values in each.items():
 		# 	print(key+"-"+ str(values))
-		if each["country"] == search_word:
+		if each["country"].lower() == search_word.lower():
 			country=each["country"]
 			cases=each["cases"]
 			todayCases=each["todayCases"]
@@ -51,12 +51,12 @@ def search():
 			# print(critical)
 		# else:
 		# 	message="Luckily, "+search_word+" is not affected by Corona Virus"
-			return render_template("front.html",country=country, cases=cases, todayCases=todayCases, deaths=deaths, todayDeaths=todayDeaths, recovered=recovered, critical=critical)
+			return render_template("front.html",country=country, cases=cases, todayCases=todayCases, deaths=deaths, todayDeaths=todayDeaths, recovered=recovered, critical=critical, flag=True)
 
 
-		country_name=[each["country"] for each in data]
-		if search_word not in country_name:
-			return render_template("front.html", message="Please check the country's name. Note: First letter of the country's name must be capital")
+		country_name=[each["country"].lower() for each in data]
+		if search_word.lower() not in country_name:
+			return render_template("front.html", flag=False)
 
 	return render_template("front.html")
 		# if each.get("country") != search_word:
@@ -68,8 +68,8 @@ def search():
 		# 	print(key)
 
 
-@app.route("/map", methods=["GET"])
-def map():
+@app.route("/world_covid_map", methods=["GET"])
+def world_covid_map():
 	m = folium.Map(
     location=[20, 77],
     zoom_start=4,
@@ -93,4 +93,9 @@ def map():
 		# folium.plugins.Heatmap([20, 77, 50], "MY_INDIA")
 		# folium.Marker([latitude[], longitude[1]], popup='<b>Timberline Lodge</b>', tooltip=tooltip).add_to(m)
 		# m.save("index1.html")	
-	return m._repr_html_()
+	m.save("templates/world_covid_map.html")
+	return render_template("world_map.html")
+
+@app.route("/send_world_covid_map", methods=["GET"])
+def send_world_covid_map():
+	return render_template('world_covid_map.html')

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>World COVID-19 Map</title>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<style>
+    body {
+      margin: 0;
+      font-family: gentona, Tahoma, sans-serif;
+    }
+
+    .topnav {
+      overflow: hidden;
+      background-color: #002d72;
+      height: 85px;
+    }
+
+    .topnav a:hover {
+      color: #F1C400;
+    }
+
+    /*.topnav a.active {
+      color: #F1C400;
+    }*/
+
+    .navbar-brand-logo {
+      float:left;
+    }
+
+    .navbar-header a {
+      color: #f2f2f2;
+      text-align: center;
+      padding: 30px 16px;
+      text-decoration: none;    
+      font-size: 16px;
+      font-weight: 560;
+    }
+
+    .topnav-right a {
+      float: right;
+      color: #f2f2f2;
+      text-align: center;
+      padding: 30px 16px;
+      text-decoration: none;    
+      font-size: 16px;
+      font-weight: 560;
+    }
+</style>
+
+</head>
+
+
+<body>
+
+<div class="topnav">
+    <div class="navbar-header">
+        <img class="navbar-brand-logo" src="https://www.ctvnews.ca/polopoly_fs/1.4894318.1586807914!/httpImage/image.png_gen/derivatives/landscape_620/image.png" alt="Image" height="80" width="80">
+        <a class="navbar-brand" href="/">CORONAVIRUS RESOURCE CENTER</a>
+    </div>
+
+    <div class="topnav-right"> 
+        <a href="https://coronavirus.jhu.edu/live">Videos & Live Events</a>
+        <a href="https://coronavirus.jhu.edu/#covid-19-basics">COVID-19 Basics</a>
+        <a href="https://www.bloomberg.com/news/audio/2020-04-24/tracking-and-identifying-covid-19-cases-podcast">News & Information</a>
+        <a href="/world_covid_map">Maps & Trends</a>
+        <a class="active" href="/">Home</a>
+    </div>
+
+</div>
+
+<h1> World COVID-19 Map </h1>
+
+<iframe class="map", src="/send_world_covid_map" width="1620" height="775"></iframe>
+	
+
+</body>
+</html>
