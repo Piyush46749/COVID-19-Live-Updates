@@ -76,6 +76,27 @@ table, tr, td {
 
 #tbl tr:hover {background-color: rgba(104,172,229);}
 
+.update {
+  color: white;
+  position: fixed;
+  right: 2px;
+  top: 100px;
+  width: 12%;
+  border: 3px solid black;
+  text-align: center;
+  padding: 4px;
+  display: inline-block;
+  border-radius: 5px;
+  animation: blinkingBackground 1s infinite;
+}
+
+@keyframes blinkingBackground{
+		0%		{ background-color: #FF9900;}
+		33%		{ background-color: #FF6600;}
+		66%		{ background-color: #FF3300;}
+		100%    { background-color: #FF0000;}
+	}
+
 
 </style>
 </head>
@@ -98,7 +119,7 @@ table, tr, td {
 	</div>
 
 </div>
-
+<div class="col-lg-4 col-md-4 col-sm-4 container justify-content-center">
 <h1> COVID-19 Dashboard </h1>
 <form action="/" method="POST">
 	<input type="text" name="search" placeholder="Enter the country..." required>
@@ -145,6 +166,10 @@ table, tr, td {
     </tr>  
 </table>
 {% endif %}
+
+</div>
+
+<div class="update"> Last updated at 7:30 am </div>
 
 </body>
 </html>

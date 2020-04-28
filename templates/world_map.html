@@ -49,6 +49,29 @@
       font-size: 16px;
       font-weight: 560;
     }
+
+    .update {
+      color: white;
+      position: fixed;
+      right: 2px;
+      top: 100px;
+      width: 12%;
+      border: 3px solid black;
+      text-align: center;
+      padding: 4px;
+      display: inline-block;
+      border-radius: 5px;
+      animation: blinkingBackground 1s infinite;
+    }
+
+    @keyframes blinkingBackground{
+        0%      { background-color: #FF9900;}
+        33%     { background-color: #FF6600;}
+        66%     { background-color: #FF3300;}
+        100%    { background-color: #FF0000;}
+    }
+ 
+
 </style>
 
 </head>
@@ -75,6 +98,7 @@
 <h1> World COVID-19 Map </h1>
 
 <iframe class="map", src="/send_world_covid_map" width="1620" height="775"></iframe>
+<div class="update"> Last updated at 7:30 am </div>
 	
 
 </body>
