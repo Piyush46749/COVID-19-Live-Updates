@@ -6,7 +6,7 @@ import json
 import requests
 import folium
 from folium.plugins import HeatMap
-
+import datetime
 
 app=Flask(__name__)
 
@@ -14,6 +14,25 @@ app=Flask(__name__)
 # nosql_db = mongo_client["project"]
 # col = nosql_db["data"]
 
+now = datetime.datetime.now()
+date_actual = now.day
+date_to_send = date_actual - 1
+
+month = now.month
+year = now.year
+
+hour_actual = now.hour
+hour_to_send = hour_actual - 3
+
+minute_actual = now.minute
+minute_to_send = minute_actual - 6
+
+second_actual = now.second
+second_to_send = second_actual - 8
+
+date = (str(date_to_send)+"/"+str(month)+"/"+str(year))
+# time = (str(hour_to_send)+":"+str(minute_to_send)+":"+str(second_to_send)+" seconds")
+time = "2:00 am"
 @app.route("/", methods=["GET"])
 def home():
 	return render_template("front.html")
@@ -27,7 +46,10 @@ def search():
 	todayDeaths="0"
 	recovered="0"
 	critical="0"
-	# message="0"
+
+	continent="0"
+	active="0"
+	tests="0"
 	search_word= request.form.get('search')
 
 	URL= "https://corona.lmao.ninja/v2/countries"
@@ -46,12 +68,16 @@ def search():
 			todayDeaths=each["todayDeaths"]
 			recovered=each["recovered"]
 			critical=each["critical"]
+
+			continent=each["continent"]
+			active=each["active"]
+			tests=each["tests"]
 		# 	listing=[(each.keys())]
 		# 	print(listing)
 			# print(critical)
 		# else:
 		# 	message="Luckily, "+search_word+" is not affected by Corona Virus"
-			return render_template("front.html",country=country, cases=cases, todayCases=todayCases, deaths=deaths, todayDeaths=todayDeaths, recovered=recovered, critical=critical, flag=True)
+			return render_template("front.html",country=country, cases=cases, todayCases=todayCases, continent=continent, active=active, tests=tests, deaths=deaths, todayDeaths=todayDeaths, recovered=recovered, critical=critical, date= date, time= time, flag=True)
 
 
 		country_name=[each["country"].lower() for each in data]
@@ -94,8 +120,16 @@ def world_covid_map():
 		# folium.Marker([latitude[], longitude[1]], popup='<b>Timberline Lodge</b>', tooltip=tooltip).add_to(m)
 		# m.save("index1.html")	
 	m.save("templates/world_covid_map.html")
-	return render_template("world_map.html")
+	return render_template("world_map.html", date= date, time= time)
 
 @app.route("/send_world_covid_map", methods=["GET"])
 def send_world_covid_map():
-	return render_template('world_covid_map.html')
+	return render_template("world_covid_map.html")
+
+@app.route("/covid_19_basics", methods=["GET"])
+def covid_19_basics():
+	return render_template("covid_19_basics.html")
+
+@app.route("/news_information", methods=["GET"])
+def news_information():
+	return render_template("news_information.html")

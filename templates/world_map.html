@@ -33,8 +33,8 @@
 
     .navbar-header a {
       color: #f2f2f2;
-      text-align: center;
-      padding: 30px 16px;
+      /*text-align: center;*/
+      padding: 25px 16px;
       text-decoration: none;    
       font-size: 16px;
       font-weight: 560;
@@ -54,7 +54,7 @@
       color: white;
       position: fixed;
       right: 2px;
-      top: 100px;
+      top: 88px;
       width: 12%;
       border: 3px solid black;
       text-align: center;
@@ -70,7 +70,12 @@
         66%     { background-color: #FF3300;}
         100%    { background-color: #FF0000;}
     }
- 
+
+    h1{
+      text-align: center;
+      font-weight: 660;
+    }
+
 
 </style>
 
@@ -79,16 +84,21 @@
 
 <body>
 
+<div class="update"> 
+    <p>Last updated on {{ date }}</p> at {{ time }} 
+</div>
+
 <div class="topnav">
     <div class="navbar-header">
         <img class="navbar-brand-logo" src="https://www.ctvnews.ca/polopoly_fs/1.4894318.1586807914!/httpImage/image.png_gen/derivatives/landscape_620/image.png" alt="Image" height="80" width="80">
-        <a class="navbar-brand" href="/">CORONAVIRUS RESOURCE CENTER</a>
+        <a class="navbar-brand" href="/">CORONAVIRUS RESOURCE CENTER <p>Presented by Piyush</p></a>
+
     </div>
 
     <div class="topnav-right"> 
-        <a href="https://coronavirus.jhu.edu/live">Videos & Live Events</a>
-        <a href="https://coronavirus.jhu.edu/#covid-19-basics">COVID-19 Basics</a>
-        <a href="https://www.bloomberg.com/news/audio/2020-04-24/tracking-and-identifying-covid-19-cases-podcast">News & Information</a>
+        <a target="_blank" href="https://www.billboard.com/articles/columns/pop/9335531/coronavirus-quarantine-music-events-online-streams">Livestreams & Virtual Concerts</a>
+        <a href="/covid_19_basics">COVID-19 Basics</a>
+        <a href="/news_information">News & Information</a>
         <a href="/world_covid_map">Maps & Trends</a>
         <a class="active" href="/">Home</a>
     </div>
@@ -97,9 +107,7 @@
 
 <h1> World COVID-19 Map </h1>
 
-<iframe class="map", src="/send_world_covid_map" width="1620" height="775"></iframe>
-<div class="update"> Last updated at 7:30 am </div>
-	
+<iframe class="map", src="/send_world_covid_map" width="1620" height="775"></iframe>	
 
 </body>
 </html>
