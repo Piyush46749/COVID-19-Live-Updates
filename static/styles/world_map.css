@@ -1,4 +1,8 @@
-    body {
+    html {
+        overflow-y: hidden;
+    }
+
+    body, html {
       margin: 0;
       font-family: gentona, Tahoma, sans-serif;
     }
@@ -37,10 +41,10 @@
 
     .update {
       color: white;
-      position: fixed;
+      position: absolute;
       right: 2px;
       top: 88px;
-      width: 12%;
+      width: 20%;
       border: 3px solid black;
       text-align: center;
       padding: 4px;
@@ -49,12 +53,12 @@
       animation: blinkingBackground 1s infinite;
     }
 
-    @keyframes blinkingBackground{
-        0%      { background-color: #FF9900;}
-        33%     { background-color: #FF6600;}
-        66%     { background-color: #FF3300;}
-        100%    { background-color: #FF0000;}
-    }
+@keyframes blinkingBackground{
+    0%    { background-color: #FF9900;}
+    33%   { background-color: #FF6600;}
+    66%   { background-color: #FF3300;}
+    100%    { background-color: #FF0000;}
+}
 
     h1{
       text-align: center;

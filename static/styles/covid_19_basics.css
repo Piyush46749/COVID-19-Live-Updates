@@ -40,7 +40,7 @@
   margin-right: auto;
   padding-top: 6px;
   padding-left: 80px;
-  padding-right: 80px;	
+  padding-right: 80px;  
 
 }
 
@@ -56,21 +56,22 @@
 }
 
 h1, h2{
-	text-align: center;
+  text-align: center;
 }
 
 body {
   background-image: url('/static/images/background.png');
-    background-repeat: no-repeat;
+  background-repeat: no-repeat;
+  background-position: center center;
   background-attachment: fixed;
-  background-size: 100% 100%;
+  background-size: cover;
   opacity: 0.1,
 }
 
 a{
-	color: white;
+  color: white;
 }
 
 a:hover{
-	color: red;
+  color: red;
 }

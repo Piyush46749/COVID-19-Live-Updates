@@ -41,6 +41,7 @@ body, html {
   margin-left: auto;
   margin-right: auto;
   font-size: 33px;
+
 }
 
 #tbl tr:nth-child(even){
@@ -67,7 +68,13 @@ table, tr, td {
 
 body {
   background-image: url('/static/images/virus.jpg');
-    background-repeat: no-repeat;
+  background-repeat: no-repeat;
+  background-position: center center;
   background-attachment: fixed;
-  background-size: 100% 100%;
+  background-size: cover;
+}
+
+.container {
+   width: 75%;
+   margin: 50px auto 0;
 }
